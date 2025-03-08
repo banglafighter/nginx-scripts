@@ -23,7 +23,7 @@ After=network-online.target
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/certbot renew --quiet
-ExecStartPost=/bin/systemctl reload nginx  # Change to apache2 if using Apache
+ExecStartPost=/bin/systemctl reload nginx
 EOF
 
 echo "Certbot service file created: $SERVICE_FILE"
@@ -34,7 +34,7 @@ sudo bash -c "cat > $TIMER_FILE" <<EOF
 Description=Run Certbot renewal twice daily
 
 [Timer]
-OnCalendar=*-*-* 00,12:00:00  # Runs at midnight and noon
+OnCalendar=*-*-* 00,12:00:00
 Persistent=true
 
 [Install]
